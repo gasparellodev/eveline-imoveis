@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300&family=Work+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #f6f4f0; }
+  body { -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #141a16; text-decoration: none; }
+  a:hover { color: #3f5c4a; }
+  input, select, textarea, button { font-family: inherit; }
+  @keyframes evRise { from { opacity: 0; transform: translateY(24px) } to { opacity: 1; transform: none } }
+  @keyframes evScroll { 0% { transform: translateY(-6px); opacity: 0 } 40% { opacity: 1 } 100% { transform: translateY(10px); opacity: 0 } }
+  @keyframes evPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(20,26,22,.2) } 50% { box-shadow: 0 0 0 12px rgba(20,26,22,0) } }
+</style>
+</helmet>
+<div style="font-family: 'Work Sans', Helvetica, sans-serif; color: #141a16; background: #f6f4f0; overflow-x: hidden;">
+
+  <header style="{{ headerStyle }}">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 0 clamp(22px, 5vw, 80px); height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 22px;">
+      <a href="#topo" style="display: flex; flex-direction: column; gap: 3px;">
+        <span style="{{ wordmarkStyle }}">Eveline Imóveis</span>
+        <span style="{{ crecStyle }}">CRECI 30044-J · Mogi das Cruzes</span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: clamp(12px, 1.9vw, 28px);">
+        <a href="#imoveis" style="{{ navLinkStyle }}">Imóveis</a>
+        <a href="#lancamento" style="{{ navLinkStyle }}">Lançamentos</a>
+        <a href="#servicos" style="{{ navLinkStyle }}">Serviços</a>
+        <a href="#empresa" style="{{ navLinkStyle }}">Empresa</a>
+        <a href="#contato" style="{{ navLinkStyle }}">Contato</a>
+        <a href="#anuncie" style="{{ navCtaStyle }}" style-hover="opacity: .78">Anuncie seu imóvel</a>
+      </nav>
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="{{ burgerStyle }}">
+        <span style="{{ burgerTop }}"></span>
+        <span style="{{ burgerBottom }}"></span>
+      </button>
+    </div>
+  </header>
+
+  <div style="{{ mobileMenuStyle }}">
+    <div style="display: flex; flex-direction: column; padding: clamp(84px, 16vh, 150px) 26px 26px;">
+      <a href="#imoveis" onClick="{{ closeMenu }}" style="{{ mobileLinkStyle }}">Imóveis</a>
+      <a href="#lancamento" onClick="{{ closeMenu }}" style="{{ mobileLinkStyle }}">Lançamentos</a>
+      <a href="#servicos" onClick="{{ closeMenu }}" style="{{ mobileLinkStyle }}">Serviços</a>
+      <a href="#empresa" onClick="{{ closeMenu }}" style="{{ mobileLinkStyle }}">Empresa</a>
+      <a href="#contato" onClick="{{ closeMenu }}" style="{{ mobileLinkStyle }}">Contato</a>
+      <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 10px;">
+        <a href="#anuncie" onClick="{{ closeMenu }}" style="display: flex; align-items: center; justify-content: center; height: 56px; border-radius: 999px; border: 1px solid rgba(246,244,240,.34); color: #f6f4f0; font-size: 11px; letter-spacing: .2em; text-transform: uppercase;">Anuncie seu imóvel</a>
+        <a href="tel:+551147253632" style="display: flex; align-items: center; justify-content: center; height: 56px; color: rgba(246,244,240,.6); font-size: 13px; letter-spacing: .06em;">Escritório (11) 4725-3632</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="topo" style="position: relative; min-height: min(94vh, 920px); display: flex; align-items: flex-end; background: #0f140f; overflow: hidden;">
+    <div style="{{ heroImgStyle }}">
+      <div style="position: absolute; inset: 0; background: repeating-linear-gradient(115deg, #1b211b 0 28px, #161b16 28px 56px);"></div>
+      <img src="https://vault.imob.online/resized/u1887/buildings/photos/27987/gZ7yTKleTu8pNp8sStDappCa-whatsapp-image-2023-11-29-at-101508.jpg/wxlarge.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;" />
+    </div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,14,10,.62) 0%, rgba(10,14,10,.2) 34%, rgba(10,14,10,.88) 100%);"></div>
+    <div style="position: relative; width: 100%; max-width: 1400px; margin: 0 auto; padding: clamp(124px,16vh,170px) clamp(22px,5vw,80px) clamp(34px,5vw,64px);">
+      <div style="animation: evRise .9s .1s both; font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: rgba(246,244,240,.6);">Mogi das Cruzes · Alto Tietê · Litoral</div>
+      <h1 style="animation: evRise .9s .26s both; margin: clamp(16px,2.6vw,28px) 0 0; font-family: Newsreader, Georgia, serif; font-weight: 300; font-size: clamp(36px, 7.4vw, 104px); line-height: .98; letter-spacing: -.022em; color: #f8f6f2; max-width: 17ch; text-wrap: pretty;">Os melhores imóveis em Mogi das Cruzes.</h1>
+      <p style="animation: evRise .9s .44s both; margin: clamp(16px,2.2vw,24px) 0 0; max-width: 48ch; font-size: clamp(14px,1.2vw,17px); line-height: 1.7; color: rgba(246,244,240,.76); font-weight: 300;">Venda, locação e temporada com acompanhamento de quem conhece cada bairro da região.</p>
+
+      <form onSubmit="{{ onSearch }}" style="{{ searchStyle }}">
+        <label style="{{ searchFieldStyle }}">
+          <span style="{{ searchLabelStyle }}">Finalidade</span>
+          <select value="{{ purpose }}" onChange="{{ setPurpose }}" style="{{ searchInputStyle }}">
+            <sc-for list="{{ purposeOptions }}" as="o" hint-placeholder-count="4">
+              <option value="{{ o }}">{{ o }}</option>
+            </sc-for>
+          </select>
+        </label>
+        <label style="{{ searchFieldStyle }}">
+          <span style="{{ searchLabelStyle }}">Tipo do imóvel</span>
+          <select value="{{ kind }}" onChange="{{ setKind }}" style="{{ searchInputStyle }}">
+            <sc-for list="{{ kindOptions }}" as="o" hint-placeholder-count="6">
+              <option value="{{ o }}">{{ o }}</option>
+            </sc-for>
+          </select>
+        </label>
+        <label style="{{ searchFieldStyle }}">
+          <span style="{{ searchLabelStyle }}">Cidade</span>
+          <select value="{{ city }}" onChange="{{ setCity }}" style="{{ searchInputStyle }}">
+            <sc-for list="{{ cityOptions }}" as="o" hint-placeholder-count="5">
+              <option value="{{ o }}">{{ o }}</option>
+            </sc-for>
+          </select>
+        </label>
+        <button type="submit" style="{{ searchBtnStyle }}" style-hover="opacity: .86">Buscar</button>
+      </form>
+
+      <div style="margin-top: clamp(22px,3vw,34px); display: flex; align-items: center; gap: 13px; font-size: 10px; letter-spacing: .28em; text-transform: uppercase; color: rgba(246,244,240,.48);">
+        <span style="display: block; width: 1px; height: 28px; background: rgba(246,244,240,.28); position: relative; overflow: hidden;"><span style="position: absolute; inset: 0; background: #f6f4f0; animation: evScroll 2.4s ease-in-out infinite;"></span></span>
+        Role para ver os destaques
+      </div>
+    </div>
+  </section>
+
+  <section id="imoveis" style="background: #f6f4f0; padding: clamp(76px,10vw,150px) clamp(22px,5vw,80px) clamp(80px,11vw,170px);">
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <div data-reveal="1" style="opacity: 0; transform: translateY(20px); transition: opacity .8s, transform .8s cubic-bezier(.2,.7,.3,1); display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 18px; padding-bottom: clamp(20px,2.6vw,34px); border-bottom: 1px solid #e8e3da;">
+        <div>
+          <div style="font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: #7d8a80;">Carteira selecionada</div>
+          <h2 style="margin: 12px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 300; font-size: clamp(30px,4.6vw,62px); line-height: 1.02; letter-spacing: -.02em;">Destaques da semana</h2>
+        </div>
+        <div style="font-size: 13px; color: #66726b; font-weight: 300;">{{ resultLabel }}</div>
+      </div>
+
+      <div style="margin: clamp(20px,2.6vw,32px) 0 clamp(22px,3vw,38px); display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none;">
+        <sc-for list="{{ chips }}" as="c" hint-placeholder-count="7">
+          <button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button>
+        </sc-for>
+      </div>
+
+      <div style="{{ gridStyle }}">
+        <sc-for list="{{ visible }}" as="p" hint-placeholder-count="6">
+          <button data-reveal="1" onClick="{{ p.onClick }}" style="{{ p.cardStyle }}">
+            <div style="position: relative; overflow: hidden; aspect-ratio: 4/3; border-radius: 10px; background: linear-gradient(140deg, #eae6de, #e1ddd4); box-shadow: 0 1px 2px rgba(20,26,22,.05); transition: box-shadow .6s cubic-bezier(.2,.7,.3,1);" style-hover="box-shadow: 0 26px 60px -24px rgba(20,26,22,.38)">
+              <img src="{{ p.photo }}" alt="{{ p.title }}" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.3,1);" style-hover="transform: scale(1.04)" />
+              <div style="{{ p.tagStyle }}">{{ p.tag }}</div>
+            </div>
+            <div style="padding: 16px 2px 2px;">
+              <div style="font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: #7d8a80;">{{ p.kind }} · {{ p.city }}</div>
+              <div style="margin-top: 8px; font-family: Newsreader, Georgia, serif; font-size: clamp(19px,1.7vw,25px); line-height: 1.16;">{{ p.district }}</div>
+              <div style="margin-top: 12px; display: flex; flex-wrap: wrap; gap: 14px; font-size: 11.5px; color: #66726b; font-weight: 300;">
+                <sc-for list="{{ p.specs }}" as="s" hint-placeholder-count="3">
+                  <span>{{ s }}</span>
+                </sc-for>
+              </div>
+              <div style="margin-top: 16px; padding-top: 14px; border-top: 1px solid #ece8e0; display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+                <span style="font-size: clamp(15px,1.4vw,19px); letter-spacing: -.01em;">{{ p.price }}</span>
+                <span style="font-size: 15px; color: #7d8a80; transition: transform .4s;" style-hover="transform: translate(4px,-4px)">↗</span>
+              </div>
+            </div>
+          </button>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ empty }}" hint-placeholder-val="{{ false }}">
+        <div style="padding: clamp(38px,6vw,72px); border: 1px solid #e8e3da; border-radius: 18px; text-align: center;">
+          <div style="font-family: Newsreader, Georgia, serif; font-size: clamp(22px,2.4vw,32px); font-weight: 300;">Nenhum imóvel nesta combinação.</div>
+          <p style="margin: 12px auto 22px; max-width: 42ch; font-size: 14px; line-height: 1.8; color: #66726b; font-weight: 300;">Podemos encomendar seu imóvel: você descreve o que procura e avisamos quando entrar na carteira.</p>
+          <a href="{{ waHref }}" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center; justify-content: center; height: 56px; border-radius: 999px; padding: 0 32px; background: #141a16; color: #f6f4f0; font-size: 11px; letter-spacing: .2em; text-transform: uppercase;" style-hover="color: #f6f4f0; opacity: .88">Encomendar imóvel</a>
+        </div>
+      </sc-if>
+    </div>
+  </section>
+
+  <section id="lancamento" style="position: relative; background: #0f140f; color: #f6f4f0; overflow: hidden;">
+    <div style="position: relative; max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 0; align-items: stretch;">
+      <div style="position: relative; min-height: clamp(300px, 42vw, 600px); background: linear-gradient(140deg, #1e241e, #141a14); overflow: hidden;">
+        <img src="{{ condo.photo }}" alt="{{ condo.name }}" loading="lazy" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1s cubic-bezier(.2,.7,.3,1);" style-hover="transform: scale(1.05)" />
+      </div>
+      <div data-reveal="1" style="opacity: 0; transform: translateY(20px); transition: opacity .8s, transform .8s cubic-bezier(.2,.7,.3,1); padding: clamp(52px,7vw,110px) clamp(24px,5vw,90px);">
+        <div style="font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: rgba(246,244,240,.45);">Pronto para morar</div>
+        <h2 style="margin: 14px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 300; font-size: clamp(30px,4.2vw,58px); line-height: 1.04; letter-spacing: -.02em;">{{ condo.name }}</h2>
+        <p style="margin: 18px 0 0; max-width: 42ch; font-size: 15px; line-height: 1.75; color: rgba(246,244,240,.68); font-weight: 300;">Condomínio em {{ condo.city }}, bairro {{ condo.district }}. Unidades de {{ condo.area }} m² com {{ condo.dorm }} dormitórios e {{ condo.suite }} suíte.</p>
+        <div style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 26px; padding-top: 24px; border-top: 1px solid rgba(246,244,240,.12);">
+          <div>
+            <div style="font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: rgba(246,244,240,.45);">A partir de</div>
+            <div style="margin-top: 8px; font-family: Newsreader, Georgia, serif; font-size: clamp(24px,2.6vw,36px); font-weight: 300;">{{ condo.price }}</div>
+          </div>
+          <div>
+            <div style="font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: rgba(246,244,240,.45);">Vagas</div>
+            <div style="margin-top: 8px; font-family: Newsreader, Georgia, serif; font-size: clamp(24px,2.6vw,36px); font-weight: 300;">{{ condo.vaga }}</div>
+          </div>
+        </div>
+        <a href="{{ waHref }}" target="_blank" rel="noreferrer" style="margin-top: 34px; display: inline-flex; align-items: center; justify-content: center; height: 58px; border-radius: 999px; padding: 0 32px; border: 1px solid rgba(246,244,240,.34); color: #f6f4f0; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; transition: background .4s, transform .4s;" style-hover="background: rgba(246,244,240,.1); transform: translateY(-2px); color: #f6f4f0">Falar sobre este condomínio</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos" style="background: #f6f4f0; padding: clamp(80px,11vw,175px) clamp(22px,5vw,80px);">
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <div data-reveal="1" style="opacity: 0; transform: translateY(20px); transition: opacity .8s, transform .8s cubic-bezier(.2,.7,.3,1); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(24px,4vw,70px); align-items: end;">
+        <h2 style="margin: 0; font-family: Newsreader, Georgia, serif; font-weight: 300; font-size: clamp(28px,4vw,56px); line-height: 1.06; letter-spacing: -.02em; max-width: 22ch;">Um atendimento para cada etapa da negociação.</h2>
+        <p style="margin: 0; max-width: 40ch; font-size: 14.5px; line-height: 1.85; color: #66726b; font-weight: 300;">Da primeira visita à assinatura, com documentação acompanhada de perto.</p>
+      </div>
+      <div style="margin-top: clamp(30px,4vw,60px); border-top: 1px solid #e8e3da;">
+        <sc-for list="{{ services }}" as="s" hint-placeholder-count="4">
+          <a href="{{ s.href }}" data-reveal="1" style="opacity: 0; transform: translateY(20px); transition: opacity .8s cubic-bezier(.2,.7,.3,1), transform .8s cubic-bezier(.2,.7,.3,1), background .4s, padding-left .4s; display: grid; grid-template-columns: 54px minmax(0, 1fr) 28px; gap: clamp(12px,2.6vw,36px); align-items: center; padding: clamp(22px,2.8vw,34px) 0; border-bottom: 1px solid #e8e3da;" style-hover="background: #efece5; padding-left: 20px">
+            <span style="font-size: 11px; letter-spacing: .2em; color: #9aa398;">{{ s.n }}</span>
+            <span style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: clamp(8px,2vw,36px); align-items: baseline;">
+              <span style="font-family: Newsreader, Georgia, serif; font-size: clamp(22px,2.6vw,36px); font-weight: 300; line-height: 1.1;">{{ s.title }}</span>
+              <span style="font-size: 14px; line-height: 1.8; color: #66726b; font-weight: 300;">{{ s.text }}</span>
+            </span>
+            <span style="font-size: 16px; color: #7d8a80; text-align: right;">→</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="anuncie" style="background: #e9e5dc; padding: clamp(80px,11vw,170px) clamp(22px,5vw,80px);">
+    <div data-reveal="1" style="opacity: 0; transform: translateY(20px); transition: opacity .8s, transform .8s cubic-bezier(.2,.7,.3,1); max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(28px,5vw,80px); align-items: center;">
+      <div>
+        <div style="font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: #7d8a80;">Proprietários</div>
+        <h2 style="margin: 14px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 300; font-size: clamp(30px,4.4vw,60px); line-height: 1.03; letter-spacing: -.02em; max-width: 18ch;">Anuncie seu imóvel com quem negocia na região.</h2>
+        <p style="margin: 20px 0 0; max-width: 42ch; font-size: 15px; line-height: 1.75; color: #4d5a50; font-weight: 300;">Receba muito mais contatos para negociar seu imóvel. Cadastramos, fotografamos e conduzimos as visitas.</p>
+        <div style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px;">
+          <a href="#contato" style="display: inline-flex; align-items: center; justify-content: center; height: 58px; border-radius: 999px; padding: 0 30px; background: #141a16; color: #f6f4f0; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; transition: transform .4s, opacity .4s;" style-hover="transform: translateY(-2px); opacity: .88; color: #f6f4f0">Cadastrar imóvel</a>
+          <a href="{{ waHref }}" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center; justify-content: center; height: 58px; border-radius: 999px; padding: 0 30px; border: 1px solid #141a16; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; transition: background .4s, transform .4s;" style-hover="background: rgba(20,26,22,.06); transform: translateY(-2px)">Agende uma ligação</a>
+        </div>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 14px; background: transparent;">
+        <sc-for list="{{ reach }}" as="r" hint-placeholder-count="4">
+          <div style="background: #f3f0ea; border-radius: 14px; padding: clamp(22px,2.6vw,32px);">
+            <div style="font-family: Newsreader, Georgia, serif; font-size: clamp(26px,3vw,40px); font-weight: 300; line-height: 1;">{{ r.value }}</div>
+            <div style="margin-top: 10px; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: #7d8a80; line-height: 1.6;">{{ r.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section id="empresa" style="background: #f6f4f0; padding: clamp(80px,11vw,175px) clamp(22px,5vw,80px);">
+    <div data-reveal="1" style="opacity: 0; transform: translateY(20px); transition: opacity .8s, transform .8s cubic-bezier(.2,.7,.3,1); max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(28px,5vw,80px);">
+      <h2 style="margin: 0; font-family: Newsreader, Georgia, serif; font-weight: 300; font-size: clamp(26px,3.4vw,46px); line-height: 1.12; letter-spacing: -.015em; text-wrap: pretty;">Uma imobiliária de Mogi das Cruzes, com atuação no Alto Tietê, na capital e no litoral.</h2>
+      <div>
+        <p style="margin: 0; font-size: 15px; line-height: 1.8; color: #4d5a50; font-weight: 300; max-width: 46ch;">A carteira reúne casas, apartamentos, lojas, terrenos e condomínios em mais de trinta cidades. Cada negociação é conduzida por corretores credenciados, com CRECI 30044-J.</p>
+        <div style="margin-top: 30px; height: 1px; background: #e8e3da;"></div>
+        <div style="margin-top: 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 14px; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #7d8a80;">
+          <span>Venda</span><span>Locação</span><span>Temporada</span><span>Permuta</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" style="background: #141a16; color: #f6f4f0; padding: clamp(80px,11vw,175px) clamp(22px,5vw,80px);">
+    <div style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: clamp(34px,6vw,90px);">
+      <div data-reveal="1" style="opacity: 0; transform: translateY(20px); transition: opacity .8s, transform .8s cubic-bezier(.2,.7,.3,1);">
+        <div style="font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: rgba(246,244,240,.45);">Fale conosco</div>
+        <h2 style="margin: 14px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 300; font-size: clamp(32px,4.8vw,66px); line-height: 1.02; letter-spacing: -.022em; max-width: 16ch;">Vamos encontrar o seu próximo endereço.</h2>
+        <div style="margin-top: 34px; display: flex; flex-direction: column; gap: 18px; font-size: 15px; font-weight: 300;">
+          <a href="tel:+551147253632" style="color: rgba(246,244,240,.8);" style-hover="color: #f6f4f0">Escritório (11) 4725-3632</a>
+          <a href="{{ waHref }}" target="_blank" rel="noreferrer" style="color: rgba(246,244,240,.8);" style-hover="color: #f6f4f0">WhatsApp (11) 99930-7751</a>
+          <a href="mailto:ola@evelineimoveis.com.br" style="color: rgba(246,244,240,.8);" style-hover="color: #f6f4f0">ola@evelineimoveis.com.br</a>
+          <span style="color: rgba(246,244,240,.55); line-height: 1.7; max-width: 32ch;">Dr. Ricardo Vilela, nº 1400, Parque Monte Líbano, Mogi das Cruzes — SP</span>
+        </div>
+      </div>
+      <form onSubmit="{{ onSubmit }}" data-reveal="1" style="opacity: 0; transform: translateY(20px); transition: opacity .8s .1s, transform .8s .1s cubic-bezier(.2,.7,.3,1); display: flex; flex-direction: column; gap: 22px;">
+        <label style="display: block;">
+          <span style="{{ fieldLabelStyle }}">Nome</span>
+          <input type="text" placeholder="Seu nome" style="{{ inputStyle }}" style-focus="border-color: #f6f4f0" />
+        </label>
+        <label style="display: block;">
+          <span style="{{ fieldLabelStyle }}">WhatsApp</span>
+          <input type="tel" placeholder="(11) 00000-0000" style="{{ inputStyle }}" style-focus="border-color: #f6f4f0" />
+        </label>
+        <label style="display: block;">
+          <span style="{{ fieldLabelStyle }}">Como podemos ajudar?</span>
+          <select style="{{ inputStyle }}" style-focus="border-color: #f6f4f0">
+            <option>Quero comprar um imóvel</option>
+            <option>Quero alugar um imóvel</option>
+            <option>Quero anunciar meu imóvel</option>
+            <option>Quero encomendar um imóvel</option>
+            <option>Outro assunto</option>
+          </select>
+        </label>
+        <label style="display: block;">
+          <span style="{{ fieldLabelStyle }}">Mensagem</span>
+          <textarea rows="4" placeholder="Bairro, faixa de valor, número de dormitórios" style="{{ inputStyle }}" style-focus="border-color: #f6f4f0"></textarea>
+        </label>
+        <button type="submit" style="align-self: start; height: 58px; border-radius: 999px; padding: 0 34px; border: 0; background: #f6f4f0; color: #141a16; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; transition: transform .4s, opacity .4s;" style-hover="transform: translateY(-2px); opacity: .88">Enviar mensagem</button>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="padding: 16px 18px; background: rgba(246,244,240,.1); border-left: 1px solid rgba(246,244,240,.5); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: rgba(246,244,240,.8);">Mensagem preparada para envio.</div>
+        </sc-if>
+      </form>
+    </div>
+  </section>
+
+  <footer style="background: #0f140f; color: rgba(246,244,240,.66); padding: clamp(50px,7vw,90px) clamp(22px,5vw,80px) clamp(90px,8vw,54px);">
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: clamp(26px,4vw,56px); padding-bottom: clamp(32px,4vw,54px); border-bottom: 1px solid rgba(246,244,240,.1);">
+        <div>
+          <div style="font-family: Newsreader, Georgia, serif; font-size: 26px; font-weight: 300; color: #f6f4f0;">Eveline Imóveis</div>
+          <div style="margin-top: 10px; font-size: 11px; letter-spacing: .2em; text-transform: uppercase; color: rgba(246,244,240,.4);">CRECI 30044-J</div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 11px; font-size: 13.5px;">
+          <span style="{{ footHeadStyle }}">Navegação</span>
+          <a href="#imoveis" style="color: rgba(246,244,240,.68);" style-hover="color: #f6f4f0">Imóveis</a>
+          <a href="#lancamento" style="color: rgba(246,244,240,.68);" style-hover="color: #f6f4f0">Lançamentos</a>
+          <a href="#servicos" style="color: rgba(246,244,240,.68);" style-hover="color: #f6f4f0">Serviços</a>
+          <a href="#empresa" style="color: rgba(246,244,240,.68);" style-hover="color: #f6f4f0">Empresa</a>
+          <a href="#contato" style="color: rgba(246,244,240,.68);" style-hover="color: #f6f4f0">Contato</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 11px; font-size: 13.5px;">
+          <span style="{{ footHeadStyle }}">Contato</span>
+          <a href="tel:+551147253632" style="color: rgba(246,244,240,.68);" style-hover="color: #f6f4f0">(11) 4725-3632</a>
+          <a href="{{ waHref }}" target="_blank" rel="noreferrer" style="color: rgba(246,244,240,.68);" style-hover="color: #f6f4f0">(11) 99930-7751</a>
+          <a href="mailto:ola@evelineimoveis.com.br" style="color: rgba(246,244,240,.68);" style-hover="color: #f6f4f0">ola@evelineimoveis.com.br</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 11px; font-size: 13.5px;">
+          <span style="{{ footHeadStyle }}">Redes</span>
+          <a href="https://www.instagram.com/eveline.imoveis/" target="_blank" rel="noreferrer" style="color: rgba(246,244,240,.68);" style-hover="color: #f6f4f0">@eveline.imoveis</a>
+          <a href="https://www.facebook.com/evelineimoveisimobiliaria/" target="_blank" rel="noreferrer" style="color: rgba(246,244,240,.68);" style-hover="color: #f6f4f0">Facebook</a>
+        </div>
+      </div>
+      <div style="padding-top: 24px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: rgba(246,244,240,.38);">
+        <span>Eveline Imóveis — Todos os direitos reservados</span>
+        <span>Prévia demonstrativa · valores e fotos do acervo atual</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="{{ waHref }}" target="_blank" rel="noreferrer" style="{{ waFloatStyle }}" style-hover="transform: scale(1.06)">
+    <span style="font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase;">Whats</span>
+  </a>
+
+  <div style="{{ mobileBarStyle }}">
+    <a href="tel:+551147253632" style="flex: 1; display: flex; align-items: center; justify-content: center; height: 100%; color: #f6f4f0; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; border-right: 1px solid rgba(246,244,240,.2);">Ligar</a>
+    <a href="{{ waHref }}" target="_blank" rel="noreferrer" style="flex: 1.4; display: flex; align-items: center; justify-content: center; height: 100%; color: #f6f4f0; font-size: 11px; letter-spacing: .16em; text-transform: uppercase;">Falar no WhatsApp</a>
+  </div>
+
+  <sc-if value="{{ detail }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 95; background: rgba(9,12,9,.97); overflow-y: auto; animation: evRise .4s both;">
+      <div style="min-height: 100%; display: flex; flex-direction: column;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px clamp(16px,3vw,34px); border-bottom: 1px solid rgba(246,244,240,.1);">
+          <span style="font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: rgba(246,244,240,.5);">{{ detail.counter }} · Ref. {{ detail.ref }}</span>
+          <button onClick="{{ closeDetail }}" aria-label="Fechar" style="width: 44px; height: 44px; border: 1px solid rgba(246,244,240,.28); background: none; color: #f6f4f0; font-size: 15px; cursor: pointer; transition: background .3s;" style-hover="background: rgba(246,244,240,.12)">✕</button>
+        </div>
+        <div style="flex: 1; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: clamp(20px,3vw,44px); padding: clamp(18px,3vw,40px) clamp(16px,3vw,34px);">
+          <div style="{{ detail.photoStyle }}"></div>
+          <div style="color: #f6f4f0;">
+            <div style="font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: rgba(246,244,240,.5);">{{ detail.kind }} para {{ detail.purpose }}</div>
+            <h3 style="margin: 12px 0 0; font-family: Newsreader, Georgia, serif; font-weight: 300; font-size: clamp(28px,3.6vw,50px); line-height: 1.04; letter-spacing: -.02em;">{{ detail.district }}</h3>
+            <div style="margin-top: 8px; font-size: 14px; color: rgba(246,244,240,.6); font-weight: 300;">{{ detail.city }} — SP</div>
+            <div style="margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 10px;">
+              <sc-for list="{{ detail.table }}" as="t" hint-placeholder-count="4">
+                <div style="border: 1px solid rgba(246,244,240,.14); border-radius: 12px; padding: 16px 15px;">
+                  <div style="font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: rgba(246,244,240,.45);">{{ t.label }}</div>
+                  <div style="margin-top: 8px; font-family: Newsreader, Georgia, serif; font-size: 22px; font-weight: 300;">{{ t.value }}</div>
+                </div>
+              </sc-for>
+            </div>
+            <div style="margin-top: 28px; padding-top: 22px; border-top: 1px solid rgba(246,244,240,.12);">
+              <div style="font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: rgba(246,244,240,.45);">{{ detail.priceLabel }}</div>
+              <div style="margin-top: 8px; font-family: Newsreader, Georgia, serif; font-size: clamp(28px,3vw,42px); font-weight: 300;">{{ detail.price }}</div>
+            </div>
+            <div style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px;">
+              <a href="{{ detail.waHref }}" target="_blank" rel="noreferrer" style="display: inline-flex; align-items: center; justify-content: center; height: 56px; border-radius: 999px; padding: 0 30px; background: #f6f4f0; color: #141a16; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; transition: transform .4s;" style-hover="transform: translateY(-2px); color: #141a16">Quero mais informações</a>
+              <button onClick="{{ prev }}" aria-label="Anterior" style="{{ navBtnStyle }}" style-hover="background: rgba(246,244,240,.12)">←</button>
+              <button onClick="{{ next }}" aria-label="Próximo" style="{{ navBtnStyle }}" style-hover="background: rgba(246,244,240,.12)">→</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280},&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5511999307751&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;},&quot;accentMode&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;escuro&quot;,&quot;claro&quot;],&quot;default&quot;:&quot;escuro&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Lançamento&quot;}}">
+const IMG = "https://vault.imob.online/resized/u1887/properties/photos/";
+
+const LISTINGS = [
+  { ref: "3821", kind: "Casa", purpose: "Venda", city: "Mogi das Cruzes", district: "Conjunto Habitacional São Sebastião",
+    price: "R$ 650.000,00", dorm: "3", suite: "—", vaga: "2", bath: "3", area: "—",
+    photo: IMG + "17531104/rNyDJb7BMD8vcvhbK0ifXO5i-whatsapp-image-2024-05-09-at-161722.jpg/klarge.jpg" },
+  { ref: "3247", kind: "Casa", purpose: "Venda", city: "Mogi das Cruzes", district: "Centro",
+    price: "R$ 850.000,00", dorm: "3", suite: "1", vaga: "1", bath: "3", area: "126,4",
+    photo: IMG + "17324671/Znavk2yRtWfvfKC1AyezlM45-whatsapp-image-2023-05-25-at-112825.jpg/klarge.jpg" },
+  { ref: "2918", kind: "Casa", purpose: "Venda", city: "Mogi das Cruzes", district: "Villa DI Cesar",
+    price: "R$ 1.100.000,00", dorm: "4", suite: "3", vaga: "2", bath: "5", area: "255",
+    photo: IMG + "17184476/WWY5j9tNIfPpmPEyQNKC75Ca-whatsapp-image-2022-11-10-at-161032.jpg/klarge.jpg" },
+  { ref: "4372", kind: "Apartamento", purpose: "Venda", city: "Mogi das Cruzes", district: "Loteamento Mogilar",
+    price: "R$ 830.000,00", dorm: "3", suite: "1", vaga: "2", bath: "2", area: "—",
+    photo: IMG + "17697111/3szay6gUUTRuayqpvZWGgWqM-whatsapp-image-2025-02-26-at-170058.jpg/klarge.jpg" },
+  { ref: "4484", kind: "Apartamento", purpose: "Venda", city: "Mogi das Cruzes", district: "Vila Mogilar",
+    price: "R$ 350.000,00", dorm: "2", suite: "—", vaga: "—", bath: "1", area: "—",
+    photo: IMG + "17769882/IrIrDCvd4K0BuwSswI4EtTjJ-whatsapp-image-2025-08-05-at-093543.jpg/klarge.jpg" },
+  { ref: "2615", kind: "Casa", purpose: "Venda", city: "Mogi das Cruzes", district: "Conjunto Residencial Nova Bertioga",
+    price: "R$ 600.000,00", dorm: "3", suite: "1", vaga: "3", bath: "2", area: "217,79",
+    photo: IMG + "17090053/yVQb7oQ8l61XFCqLlKnok438-whatsapp-image-2022-05-28-at-100811.jpg/klarge.jpg" },
+  { ref: "3713", kind: "Loja", purpose: "Locação", city: "Mogi das Cruzes", district: "Centro",
+    price: "R$ 7.000,00", dorm: "—", suite: "—", vaga: "—", bath: "—", area: "—",
+    photo: IMG + "17497764/XdQ4TOXGqUqpXr6yJDlKaVIZ-whatsapp-image-2024-03-20-at-125409.jpg/klarge.jpg" },
+  { ref: "4346", kind: "Loft", purpose: "Locação", city: "Mogi das Cruzes", district: "Loteamento Mogilar",
+    price: "R$ 3.300,00", dorm: "1", suite: "—", vaga: "1", bath: "1", area: "—",
+    photo: IMG + "17675502/wk6BLBajuuTY87QZOpcQ1igc-img-20250130-wa0003.jpg/klarge.jpg" },
+  { ref: "4020", kind: "Casa", purpose: "Venda", city: "Suzano", district: "Cidade Boa Vista",
+    price: "R$ 530.000,00", dorm: "3", suite: "1", vaga: "3", bath: "2", area: "186",
+    photo: IMG + "17552084/vxGjMgTLQJwTVIBJzpYPd760-imagem-do-whatsapp-de-2024-07-24-as-135001_060b77ae.jpg/klarge.jpg" },
+  { ref: "1744", kind: "Casa", purpose: "Locação", city: "Olímpia", district: "Centro",
+    price: "Sob consulta", dorm: "2", suite: "—", vaga: "1", bath: "1", area: "60",
+    photo: IMG + "16587330/ZlImM8skN1Bsv5geqRCtRylk-5dc60e41-709e-404d-ac2e-f59b6337e38b.jpg/klarge.jpg" },
+  { ref: "676", kind: "Casa", purpose: "Venda", city: "João Pessoa", district: "Mangabeira",
+    price: "R$ 310.000,00", dorm: "1", suite: "—", vaga: "—", bath: "1", area: "70",
+    photo: IMG + "15979616/7KqtPQ82ljrOpYsKWy8kSZW8-img-20190208-wa0012.jpg/klarge.jpg" }
+];
+
+const CONDO = {
+  name: "Condomínio Spazio Mirage", city: "Mogi das Cruzes", district: "Mogi Moderno",
+  price: "R$ 212.000,00", dorm: "2", suite: "1", vaga: "1", area: "49,47",
+  photo: "https://vault.imob.online/resized/u1887/buildings/photos/27987/gZ7yTKleTu8pNp8sStDappCa-whatsapp-image-2023-11-29-at-101508.jpg/wxlarge.jpg"
+};
+
+const SERVICES = [
+  { n: "01", title: "Comprar", text: "Seleção de imóveis conforme perfil, visita acompanhada e apoio na negociação." },
+  { n: "02", title: "Alugar", text: "Locação residencial e comercial com análise de documentação e contrato." },
+  { n: "03", title: "Encomendar seu imóvel", text: "Você descreve o que procura e avisamos quando entrar na carteira." },
+  { n: "04", title: "Agendar uma ligação", text: "Escolha o melhor horário e um corretor entra em contato." }
+];
+
+const REACH = [
+  { value: "37", label: "Cidades atendidas" },
+  { value: "4", label: "Finalidades: venda, locação, temporada e permuta" },
+  { value: "30044-J", label: "Registro CRECI" },
+  { value: "2", label: "Canais diretos: escritório e WhatsApp" }
+];
+
+const CHIPS = ["Todos", "Venda", "Locação", "Casa", "Apartamento", "Loja", "Loft"];
+
+class Component extends DCLogic {
+  state = { scrolled: false, menu: false, chip: "Todos", purpose: "Todas", kind: "Todos", city: "Todas",
+            searched: false, idx: null, sent: false, px: 0, py: 0, narrow: false };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      const s = window.scrollY > 40;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    this._onMove = (e) => this.setState({
+      px: (e.clientX / window.innerWidth - 0.5) * 2,
+      py: (e.clientY / window.innerHeight - 0.5) * 2
+    });
+    this._onResize = () => {
+      const n = window.innerWidth < 880;
+      if (n !== this.state.narrow) this.setState({ narrow: n });
+    };
+    this._onKey = (e) => {
+      if (e.key === "Escape") this.setState({ idx: null, menu: false });
+      if (this.state.idx !== null) {
+        if (e.key === "ArrowRight") this.step(1);
+        if (e.key === "ArrowLeft") this.step(-1);
+      }
+    };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    window.addEventListener("mousemove", this._onMove, { passive: true });
+    window.addEventListener("resize", this._onResize);
+    window.addEventListener("keydown", this._onKey);
+    this._onResize();
+    this._io = new IntersectionObserver((es) => es.forEach((en) => {
+      if (en.isIntersecting) {
+        en.target.style.opacity = "1";
+        en.target.style.transform = "none";
+        this._io.unobserve(en.target);
+      }
+    }), { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    this.observe();
+  }
+
+  componentDidUpdate() { this.observe(); }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._onScroll);
+    window.removeEventListener("mousemove", this._onMove);
+    window.removeEventListener("resize", this._onResize);
+    window.removeEventListener("keydown", this._onKey);
+    if (this._io) this._io.disconnect();
+  }
+
+  observe() {
+    if (!this._io) return;
+    document.querySelectorAll("[data-reveal]").forEach((el) => {
+      if (el.dataset.evSeen) return;
+      el.dataset.evSeen = "1";
+      this._io.observe(el);
+    });
+  }
+
+  visible() {
+    const s = this.state;
+    return LISTINGS.filter((p) => {
+      if (s.chip !== "Todos" && p.purpose !== s.chip && p.kind !== s.chip) return false;
+      if (s.searched) {
+        if (s.purpose !== "Todas" && p.purpose !== s.purpose) return false;
+        if (s.kind !== "Todos" && p.kind !== s.kind) return false;
+        if (s.city !== "Todas" && p.city !== s.city) return false;
+      }
+      return true;
+    });
+  }
+
+  step(d) {
+    const list = this.visible();
+    if (this.state.idx === null || !list.length) return;
+    this.setState({ idx: (this.state.idx + d + list.length) % list.length });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const solid = s.scrolled;
+    const ink = solid ? "#141a16" : "#f6f4f0";
+    const list = this.visible();
+    const waBase = "https://api.whatsapp.com/send?phone=5511999307751&text=";
+    const wa = waBase + encodeURIComponent("Olá! Vim pelo site da Eveline Imóveis e gostaria de mais informações.");
+
+    const d = s.idx !== null && list[s.idx] ? list[s.idx] : null;
+    const detail = d ? {
+      ref: d.ref, kind: d.kind, purpose: d.purpose, city: d.city, district: d.district,
+      photo: d.photo, price: d.price, title: d.kind + " em " + d.city,
+      photoStyle: { position: "relative", aspectRatio: "4/3", borderRadius: "12px", overflow: "hidden",
+        backgroundColor: "#1a201a", backgroundImage: "url(" + d.photo + ")",
+        backgroundSize: "cover", backgroundPosition: "center" },
+      priceLabel: d.purpose === "Locação" ? "Aluguel" : "Venda",
+      counter: String(s.idx + 1).padStart(2, "0") + " / " + String(list.length).padStart(2, "0"),
+      table: [
+        { label: "Dorm.", value: d.dorm }, { label: "Suítes", value: d.suite },
+        { label: "Vagas", value: d.vaga }, { label: "Banheiros", value: d.bath },
+        { label: "Área m²", value: d.area }
+      ],
+      waHref: waBase + encodeURIComponent("Olá! Gostaria de informações sobre o " + d.kind + " em " + d.city + ", bairro " + d.district + ", Ref. " + d.ref + ".")
+    } : null;
+
+    return {
+      waHref: wa,
+      sent: s.sent,
+      services: SERVICES,
+      reach: REACH,
+      condo: CONDO,
+      empty: list.length === 0,
+      resultLabel: list.length + (list.length === 1 ? " imóvel disponível" : " imóveis disponíveis"),
+
+      headerStyle: {
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 80, height: solid ? "70px" : "100px",
+        background: solid ? "rgba(246,244,240,.9)" : "transparent",
+        backdropFilter: solid ? "blur(14px) saturate(140%)" : "none",
+        borderBottom: "1px solid " + (solid ? "#e8e3da" : "transparent"),
+        transition: "height .5s cubic-bezier(.2,.7,.3,1), background .5s, border-color .5s"
+      },
+      wordmarkStyle: {
+        fontFamily: "Newsreader, Georgia, serif", fontWeight: 300,
+        fontSize: solid ? "22px" : "27px", lineHeight: 1, color: ink,
+        transition: "font-size .5s cubic-bezier(.2,.7,.3,1), color .5s"
+      },
+      crecStyle: {
+        fontSize: "9.5px", letterSpacing: ".2em", textTransform: "uppercase",
+        color: solid ? "#7d8a80" : "rgba(246,244,240,.5)", transition: "color .5s",
+        opacity: s.narrow ? 0 : 1
+      },
+      navLinkStyle: {
+        display: s.narrow ? "none" : "inline-block", fontSize: "11.5px", letterSpacing: ".16em",
+        textTransform: "uppercase", color: ink, opacity: .82, transition: "color .5s, opacity .3s"
+      },
+      navCtaStyle: {
+        display: s.narrow ? "none" : "inline-flex", alignItems: "center", height: "42px", padding: "0 20px",
+        border: "1px solid " + (solid ? "#141a16" : "rgba(246,244,240,.4)"), color: ink,
+        fontSize: "10.5px", letterSpacing: ".16em", textTransform: "uppercase",
+        transition: "border-color .5s, color .5s, opacity .3s"
+      },
+      burgerStyle: {
+        display: s.narrow ? "flex" : "none", flexDirection: "column", alignItems: "flex-end",
+        justifyContent: "center", gap: "6px", width: "46px", height: "46px",
+        border: 0, background: "none", cursor: "pointer", padding: 0
+      },
+      burgerTop: {
+        display: "block", width: "24px", height: "1px", background: s.menu ? "#f6f4f0" : ink,
+        transition: "transform .4s cubic-bezier(.2,.7,.3,1), background .4s",
+        transform: s.menu ? "translateY(3.5px) rotate(45deg)" : "none"
+      },
+      burgerBottom: {
+        display: "block", width: s.menu ? "24px" : "16px", height: "1px", background: s.menu ? "#f6f4f0" : ink,
+        transition: "transform .4s cubic-bezier(.2,.7,.3,1), width .4s, background .4s",
+        transform: s.menu ? "translateY(-3.5px) rotate(-45deg)" : "none"
+      },
+      mobileMenuStyle: {
+        position: "fixed", inset: 0, zIndex: 79, background: "#0f140f",
+        opacity: s.menu ? 1 : 0, pointerEvents: s.menu ? "auto" : "none",
+        transform: s.menu ? "none" : "translateY(-12px)",
+        transition: "opacity .45s cubic-bezier(.2,.7,.3,1), transform .45s cubic-bezier(.2,.7,.3,1)"
+      },
+      mobileLinkStyle: {
+        display: "block", padding: "14px 0", borderBottom: "1px solid rgba(246,244,240,.12)",
+        fontFamily: "Newsreader, Georgia, serif", fontWeight: 300, fontSize: "32px",
+        color: "#f6f4f0", lineHeight: 1.1
+      },
+      toggleMenu: () => this.setState({ menu: !s.menu }),
+      closeMenu: () => this.setState({ menu: false }),
+
+      heroImgStyle: {
+        position: "absolute", inset: "-6%", background: "#141a16",
+        transform: "translate3d(" + (-s.px * 12).toFixed(2) + "px," + (-s.py * 12).toFixed(2) + "px,0) scale(1.05)",
+        transition: "transform .9s cubic-bezier(.2,.7,.3,1)", animation: "evRise 1.3s both", opacity: .62
+      },
+
+      purpose: s.purpose, kind: s.kind, city: s.city,
+      purposeOptions: ["Todas", "Venda", "Locação", "Temporada", "Permuta"],
+      kindOptions: ["Todos", "Casa", "Apartamento", "Loja", "Loft", "Terreno"],
+      cityOptions: ["Todas", "Mogi das Cruzes", "Suzano", "Olímpia", "João Pessoa"],
+      setPurpose: (e) => this.setState({ purpose: e.target.value }),
+      setKind: (e) => this.setState({ kind: e.target.value }),
+      setCity: (e) => this.setState({ city: e.target.value }),
+      onSearch: (e) => {
+        e.preventDefault();
+        this.setState({ searched: true, chip: "Todos", idx: null });
+        const el = document.getElementById("imoveis");
+        if (el) window.scrollTo({ top: el.offsetTop - 70, behavior: "smooth" });
+      },
+      searchStyle: {
+        animation: "evRise .9s .58s both", marginTop: "clamp(24px,3.4vw,44px)",
+        display: "grid", gridTemplateColumns: s.narrow ? "1fr" : "repeat(3, minmax(0,1fr)) auto",
+        gap: "1px", background: "rgba(246,244,240,.14)", maxWidth: "1020px",
+        border: "1px solid rgba(246,244,240,.2)", borderRadius: s.narrow ? "18px" : "999px",
+        overflow: "hidden", backdropFilter: "blur(10px)", boxShadow: "0 24px 60px rgba(8,12,8,.28)"
+      },
+      searchFieldStyle: { display: "block", background: "rgba(14,18,14,.52)", padding: s.narrow ? "16px 22px" : "16px 28px" },
+      searchLabelStyle: {
+        display: "block", marginBottom: "6px", fontSize: "9.5px", letterSpacing: ".22em",
+        textTransform: "uppercase", color: "rgba(246,244,240,.5)"
+      },
+      searchInputStyle: {
+        width: "100%", border: 0, background: "transparent", color: "#f6f4f0",
+        fontSize: "14.5px", outline: "none", appearance: "none", borderRadius: 0
+      },
+      searchBtnStyle: {
+        border: 0, background: "#f6f4f0", color: "#141a16", cursor: "pointer",
+        padding: s.narrow ? "20px" : "0 44px", fontSize: "11px", letterSpacing: ".2em",
+        textTransform: "uppercase", transition: "opacity .35s"
+      },
+
+      chips: CHIPS.map((c) => ({
+        label: c,
+        onClick: () => this.setState({ chip: c, searched: false, purpose: "Todas", kind: "Todos", city: "Todas", idx: null }),
+        style: {
+          flex: "0 0 auto", height: "44px", padding: "0 22px", borderRadius: "999px", cursor: "pointer",
+          border: "1px solid " + (s.chip === c && !s.searched ? "#141a16" : "#e8e3da"),
+          background: s.chip === c && !s.searched ? "#141a16" : "transparent",
+          color: s.chip === c && !s.searched ? "#f6f4f0" : "#5c6a60",
+          fontSize: "10.5px", letterSpacing: ".18em", textTransform: "uppercase",
+          transition: "background .4s, color .4s, border-color .4s"
+        }
+      })),
+      gridStyle: {
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 340px), 1fr))",
+        gap: "clamp(22px, 3vw, 52px)", alignItems: "start"
+      },
+      visible: list.map((p, i) => ({
+        title: p.kind + " em " + p.city, kind: p.kind, city: p.city, district: p.district,
+        photo: p.photo, price: p.price,
+        tag: p.purpose,
+        specs: [p.dorm + " dorm.", p.vaga + " vaga(s)", p.bath + " banh.", p.area + " m²"],
+        onClick: () => this.setState({ idx: i }),
+        tagStyle: {
+          position: "absolute", left: "16px", top: "16px", padding: "8px 13px", borderRadius: "999px",
+          background: "rgba(246,244,240,.92)", fontSize: "9.5px", letterSpacing: ".18em",
+          textTransform: "uppercase", color: "#141a16"
+        },
+        cardStyle: {
+          opacity: 0, transform: "translateY(20px)",
+          transition: "opacity .7s cubic-bezier(.2,.7,.3,1), transform .7s cubic-bezier(.2,.7,.3,1)",
+          transitionDelay: (i % 3) * 0.06 + "s",
+          display: "block", width: "100%", textAlign: "left", padding: 0, cursor: "pointer",
+          background: "none", border: 0, color: "#141a16"
+        }
+      })),
+
+      detail: detail,
+      closeDetail: () => this.setState({ idx: null }),
+      prev: () => this.step(-1),
+      next: () => this.step(1),
+      navBtnStyle: {
+        width: "54px", height: "54px", border: "1px solid rgba(246,244,240,.3)",
+        background: "none", color: "#f6f4f0", fontSize: "16px", cursor: "pointer", transition: "background .3s"
+      },
+
+      onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      fieldLabelStyle: {
+        display: "block", marginBottom: "10px", fontSize: "10px", letterSpacing: ".24em",
+        textTransform: "uppercase", color: "rgba(246,244,240,.5)"
+      },
+      inputStyle: {
+        width: "100%", padding: "12px 0", border: 0, borderBottom: "1px solid rgba(246,244,240,.3)",
+        background: "transparent", fontSize: "15px", color: "#f6f4f0", outline: "none",
+        transition: "border-color .4s", borderRadius: 0, resize: "vertical"
+      },
+      footHeadStyle: {
+        fontSize: "10px", letterSpacing: ".24em", textTransform: "uppercase",
+        color: "rgba(246,244,240,.4)", marginBottom: "4px"
+      },
+
+      waFloatStyle: {
+        display: s.narrow ? "none" : "flex", position: "fixed", right: "24px", bottom: "24px", zIndex: 70,
+        width: "60px", height: "60px", borderRadius: "50%", background: "#141a16", color: "#f6f4f0",
+        alignItems: "center", justifyContent: "center", animation: "evPulse 3.4s ease-out infinite",
+        transition: "transform .35s cubic-bezier(.2,.7,.3,1)"
+      },
+      mobileBarStyle: {
+        display: s.narrow ? "flex" : "none", position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 70,
+        height: "62px", background: "#141a16", borderTop: "1px solid rgba(246,244,240,.18)"
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

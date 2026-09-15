@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Archivo:wght@300;400;500;600&family=Archivo+Narrow:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  html, body { margin: 0; padding: 0; background: #f4f2ef; }
+  body { -webkit-font-smoothing: antialiased; }
+  * { box-sizing: border-box; }
+  a { color: #0b0b0b; text-decoration: none; }
+  a:hover { color: #6f6a63; }
+  input, select, textarea, button { font-family: inherit; }
+  @keyframes oaScroll { 0% { transform: translateY(-6px); opacity: 0 } 40% { opacity: 1 } 100% { transform: translateY(10px); opacity: 0 } }
+  @keyframes oaPulse { 0%,100% { box-shadow: 0 0 0 0 rgba(11,11,11,.18) } 50% { box-shadow: 0 0 0 12px rgba(11,11,11,0) } }
+  [data-reveal] { opacity: 0; transform: translateY(20px); transition: opacity .8s cubic-bezier(.2,.7,.3,1), transform .8s cubic-bezier(.2,.7,.3,1); }
+  [data-reveal][data-shown] { opacity: 1; transform: none; }
+  @keyframes oaRise { from { opacity: 0; transform: translateY(22px) } to { opacity: 1; transform: none } }
+</style>
+</helmet>
+<div style="font-family: Archivo, Helvetica, sans-serif; color: #0b0b0b; background: #f4f2ef; overflow-x: hidden;">
+
+  <header style="{{ headerStyle }}">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 0 clamp(18px, 4vw, 56px); display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 100%;">
+      <a href="#topo" style="display: flex; align-items: center; flex: 0 0 auto;">
+        <span style="position: relative; display: block;">
+          <img src="logo-oliveira.png" alt="Marmoraria Oliveira Artes" style="{{ logoStyle }}" />
+          <img src="logo-oliveira-branca.png" alt="" style="{{ logoWhiteStyle }}" />
+        </span>
+      </a>
+      <nav style="display: flex; align-items: center; gap: clamp(14px, 2vw, 30px);">
+        <a href="#projetos" style="{{ navLinkStyle }}">Projetos</a>
+        <a href="#materiais" style="{{ navLinkStyle }}">Materiais</a>
+        <a href="#processo" style="{{ navLinkStyle }}">Serviços</a>
+        <a href="#manifesto" style="{{ navLinkStyle }}">Sobre</a>
+        <a href="#contato" style="{{ navLinkStyle }}">Contato</a>
+        <a href="#contato" style="{{ navCtaStyle }}" style-hover="opacity: .75">Solicitar orçamento</a>
+      </nav>
+      <button onClick="{{ toggleMenu }}" aria-label="Menu" style="{{ burgerStyle }}">
+        <span style="{{ burgerTop }}"></span>
+        <span style="{{ burgerBottom }}"></span>
+      </button>
+    </div>
+  </header>
+
+  <div style="{{ mobileMenuStyle }}">
+    <div style="display: flex; flex-direction: column; gap: 6px; padding: clamp(80px, 18vh, 160px) 26px 26px;">
+      <a href="#projetos" onClick="{{ closeMenu }}" style="{{ mobileLinkStyle }}">Projetos</a>
+      <a href="#materiais" onClick="{{ closeMenu }}" style="{{ mobileLinkStyle }}">Materiais</a>
+      <a href="#processo" onClick="{{ closeMenu }}" style="{{ mobileLinkStyle }}">Serviços</a>
+      <a href="#manifesto" onClick="{{ closeMenu }}" style="{{ mobileLinkStyle }}">Sobre</a>
+      <a href="#contato" onClick="{{ closeMenu }}" style="{{ mobileLinkStyle }}">Contato</a>
+      <a href="{{ waHref }}" target="_blank" rel="noreferrer" onClick="{{ closeMenu }}" style="margin-top: 28px; display: inline-flex; align-items: center; justify-content: center; height: 56px; border: 1px solid rgba(244,242,239,.35); color: #f4f2ef; font-size: 12px; letter-spacing: .22em; text-transform: uppercase;">Solicitar orçamento</a>
+    </div>
+  </div>
+
+  <section id="topo" style="position: relative; min-height: min(92vh, 900px); display: flex; align-items: flex-end; overflow: hidden; background: #0b0b0b;">
+    <div style="{{ heroImgStyle }}">
+      <div style="position: absolute; inset: 0; background: repeating-linear-gradient(122deg, #1c1c1c 0 26px, #171717 26px 52px);"></div>
+      <div style="position: absolute; inset: 0; background: radial-gradient(120% 90% at 68% 28%, rgba(255,255,255,.14), rgba(0,0,0,0) 62%);"></div>
+      <div style="{{ heroSlotLabelStyle }}">fotografia hero<br />cozinha de alto padrão · ilha monumental em pedra</div>
+    </div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,11,11,.55) 0%, rgba(11,11,11,.18) 38%, rgba(11,11,11,.82) 100%);"></div>
+    <div style="position: relative; width: 100%; max-width: 1440px; margin: 0 auto; padding: max(124px, 8vw) clamp(18px, 4vw, 56px) clamp(40px, 6vw, 74px);">
+      <div style="animation: oaRise .9s .1s both;">
+        <div style="font-family: 'Archivo Narrow', monospace; font-size: 11px; letter-spacing: .34em; text-transform: uppercase; color: rgba(244,242,239,.6);">Pedras naturais · Projetos arquitetônicos</div>
+      </div>
+      <h1 style="animation: oaRise .9s .28s both; margin: clamp(18px,3vw,30px) 0 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(38px, 8.2vw, 118px); line-height: .94; letter-spacing: -.02em; color: #f7f5f2; max-width: 15ch; text-wrap: pretty;">Pedras que transformam espaços.</h1>
+      <p style="animation: oaRise .9s .46s both; margin: clamp(18px,2.4vw,26px) 0 0; max-width: 46ch; font-size: clamp(14px, 1.25vw, 17px); line-height: 1.65; color: rgba(244,242,239,.74); font-weight: 300;">Projetos em pedras naturais desenvolvidos para valorizar cada detalhe do seu ambiente.</p>
+      <div style="animation: oaRise .9s .62s both; margin-top: clamp(26px,3.5vw,44px); display: flex; flex-wrap: wrap; gap: 12px;">
+        <a href="#contato" style="display: inline-flex; align-items: center; justify-content: center; height: 56px; padding: 0 34px; background: #f4f2ef; color: #0b0b0b; font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; transition: transform .35s cubic-bezier(.2,.7,.3,1), opacity .35s;" style-hover="transform: translateY(-2px); opacity: .88; color: #0b0b0b">Solicitar orçamento</a>
+        <a href="#projetos" style="display: inline-flex; align-items: center; justify-content: center; height: 56px; padding: 0 34px; border: 1px solid rgba(244,242,239,.32); color: #f4f2ef; font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; transition: background .35s, transform .35s cubic-bezier(.2,.7,.3,1);" style-hover="background: rgba(244,242,239,.1); transform: translateY(-2px); color: #f4f2ef">Explorar projetos</a>
+      </div>
+      <div style="margin-top: clamp(30px,5vw,64px); display: flex; align-items: center; gap: 14px; font-family: 'Archivo Narrow', monospace; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; color: rgba(244,242,239,.5);">
+        <span style="display: block; width: 1px; height: 30px; background: rgba(244,242,239,.3); position: relative; overflow: hidden;"><span style="position: absolute; inset: 0; background: #f4f2ef; animation: oaScroll 2.4s ease-in-out infinite;"></span></span>
+        Scroll to explore
+      </div>
+    </div>
+  </section>
+
+  <section id="manifesto" style="background: #f4f2ef; padding: clamp(70px, 12vw, 180px) clamp(18px, 4vw, 56px);">
+    <div style="max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: clamp(30px, 5vw, 90px); align-items: start;">
+      <h2 data-reveal="1" style="margin: 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(28px, 3.8vw, 54px); line-height: 1.12; letter-spacing: -.015em; text-wrap: pretty;">Não trabalhamos apenas com pedras. Criamos superfícies que fazem parte da arquitetura.</h2>
+      <div data-reveal="1" style="padding-top: clamp(0px, 1vw, 14px);">
+        <p style="margin: 0; font-size: clamp(14px, 1.2vw, 17px); line-height: 1.75; color: #4a4741; font-weight: 300; max-width: 46ch;">Cada projeto nasce da escolha do material, passa pela precisão do corte e termina no cuidado com cada acabamento.</p>
+        <div style="margin-top: clamp(26px,3vw,40px); height: 1px; background: #dcd8d2;"></div>
+        <div style="margin-top: 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 14px; font-family: 'Archivo Narrow', monospace; font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; color: #8c8880;">
+          <span>Atendimento</span><span>Projeto</span><span>Acabamento</span><span>Personalização</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projetos" style="background: #f4f2ef; padding: 0 clamp(18px, 4vw, 56px) clamp(70px, 10vw, 140px);">
+    <div style="max-width: 1440px; margin: 0 auto;">
+      <div data-reveal="1" style="display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 20px; padding-bottom: clamp(24px,3vw,40px); border-bottom: 1px solid #dcd8d2;">
+        <div>
+          <div style="font-family: 'Archivo Narrow', monospace; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: #8c8880;">01 — Portfólio</div>
+          <h2 style="margin: 14px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(30px, 5vw, 68px); line-height: 1.02; letter-spacing: -.02em;">Projetos que falam por si.</h2>
+        </div>
+        <p style="margin: 0; max-width: 34ch; font-size: 14px; line-height: 1.7; color: #6f6a63; font-weight: 300;">Uma seleção de ambientes onde a pedra se torna parte da arquitetura.</p>
+      </div>
+
+      <div style="margin: clamp(22px,3vw,34px) 0 clamp(26px,3.4vw,42px); display: flex; gap: 8px; overflow-x: auto; padding-bottom: 6px; scrollbar-width: none;">
+        <sc-for list="{{ categories }}" as="cat" hint-placeholder-count="7">
+          <button onClick="{{ cat.onClick }}" style="{{ cat.style }}">{{ cat.label }}</button>
+        </sc-for>
+      </div>
+
+      <div style="{{ gridStyle }}">
+        <sc-for list="{{ visibleProjects }}" as="p" hint-placeholder-count="6">
+          <button data-reveal="1" onClick="{{ p.onClick }}" style="{{ p.cardStyle }}" style-hover="border-color: #c9c4bc">
+            <div style="position: relative; overflow: hidden; aspect-ratio: {{ p.ratio }}; background: #e6e3de;">
+              <div style="position: absolute; inset: 0; background: {{ p.stripes }}; transition: transform .7s cubic-bezier(.2,.7,.3,1);" style-hover="transform: scale(1.04)"></div>
+              <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; font-family: 'Archivo Narrow', monospace; font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: rgba(11,11,11,.42); line-height: 2;">{{ p.slot }}</div>
+              <div style="position: absolute; left: 14px; top: 14px; padding: 6px 10px; background: rgba(244,242,239,.9); font-family: 'Archivo Narrow', monospace; font-size: 9.5px; letter-spacing: .2em; text-transform: uppercase; color: #4a4741;">{{ p.category }}</div>
+            </div>
+            <div style="padding: 18px 4px 4px; display: flex; align-items: baseline; justify-content: space-between; gap: 14px;">
+              <div>
+                <div style="font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(19px, 1.7vw, 26px); line-height: 1.15;">{{ p.title }}</div>
+                <div style="margin-top: 6px; font-family: 'Archivo Narrow', monospace; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: #8c8880;">{{ p.material }}</div>
+              </div>
+              <span style="font-size: 16px; color: #8c8880; transition: transform .4s;" style-hover="transform: translate(4px,-4px)">↗</span>
+            </div>
+          </button>
+        </sc-for>
+      </div>
+
+      <p style="margin: clamp(26px,3vw,40px) 0 0; font-family: 'Archivo Narrow', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: #a5a09a;">Imagens e nomes conceituais — conteúdo demonstrativo desta prévia.</p>
+    </div>
+  </section>
+
+  <section id="materiais" style="background: #0b0b0b; color: #f4f2ef; padding: clamp(70px, 11vw, 160px) clamp(18px, 4vw, 56px);">
+    <div style="max-width: 1440px; margin: 0 auto;">
+      <div data-reveal="1">
+        <div style="font-family: 'Archivo Narrow', monospace; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: rgba(244,242,239,.45);">02 — Materiais</div>
+        <h2 style="margin: 14px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(17px, 3.5vw, 62px); line-height: 1.14; letter-spacing: -.02em; white-space: nowrap;">A matéria-prima também conta uma história.</h2>
+      </div>
+      <div style="margin-top: clamp(34px,5vw,64px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1px; background: rgba(244,242,239,.14);">
+        <sc-for list="{{ materials }}" as="m" hint-placeholder-count="2">
+          <button data-reveal="1" onClick="{{ m.onClick }}" style="transition: background .5s; position: relative; text-align: left; border: 0; background: #0b0b0b; color: #f4f2ef; padding: 0; cursor: pointer; overflow: hidden;" style-hover="background: #121212">
+            <div style="position: relative; aspect-ratio: 4/3.2; overflow: hidden;">
+              <div style="position: absolute; inset: 0; background: {{ m.stripes }}; transition: transform .8s cubic-bezier(.2,.7,.3,1);" style-hover="transform: scale(1.05)"></div>
+              <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Archivo Narrow', monospace; font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: rgba(244,242,239,.4);">macro {{ m.name }}</div>
+            </div>
+            <div style="padding: clamp(20px,2.4vw,30px);">
+              <div style="font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(24px,2.4vw,34px); transition: transform .45s cubic-bezier(.2,.7,.3,1);" style-hover="transform: translateX(6px)">{{ m.name }}</div>
+              <p style="margin: 10px 0 0; font-size: 13.5px; line-height: 1.7; color: rgba(244,242,239,.6); font-weight: 300; max-width: 40ch;">{{ m.desc }}</p>
+              <div style="margin-top: 20px; font-family: 'Archivo Narrow', monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: rgba(244,242,239,.45); transition: color .4s;" style-hover="color: #f4f2ef">Explorar material →</div>
+            </div>
+          </button>
+        </sc-for>
+      </div>
+      <p style="margin: clamp(24px,3vw,36px) 0 0; font-family: 'Archivo Narrow', monospace; font-size: 10.5px; letter-spacing: .16em; text-transform: uppercase; color: rgba(244,242,239,.35);">Materiais listados conforme confirmação — a seleção pode ser ampliada.</p>
+    </div>
+  </section>
+
+  <section id="processo" style="background: #f4f2ef; padding: clamp(70px, 11vw, 160px) clamp(18px, 4vw, 56px);">
+    <div style="max-width: 1440px; margin: 0 auto;">
+      <div data-reveal="1" style="opacity: 0; transform: translateY(20px); transition: opacity .8s, transform .8s cubic-bezier(.2,.7,.3,1);">
+        <div style="font-family: 'Archivo Narrow', monospace; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: #8c8880;">03 — Processo</div>
+        <h2 style="margin: 14px 0 0; max-width: 20ch; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(30px, 4.6vw, 62px); line-height: 1.04; letter-spacing: -.02em;">Da escolha da pedra ao acabamento.</h2>
+      </div>
+      <div style="margin-top: clamp(34px,5vw,70px); border-top: 1px solid #dcd8d2;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+          <div data-reveal="1" style="display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: clamp(14px,3vw,40px); align-items: start; padding: clamp(24px,3vw,40px) 0; border-bottom: 1px solid #dcd8d2;">
+            <div style="font-family: 'Archivo Narrow', monospace; font-size: 12px; letter-spacing: .18em; color: #a5a09a;">{{ s.n }}</div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: clamp(10px,2vw,40px); align-items: baseline;">
+              <div style="font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(26px,3vw,42px); line-height: 1.05;">{{ s.title }}</div>
+              <p style="margin: 0; font-size: 14px; line-height: 1.75; color: #6f6a63; font-weight: 300; max-width: 44ch;">{{ s.text }}</p>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <section style="position: relative; background: #14130f; color: #f4f2ef; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: repeating-linear-gradient(108deg, #1b1a16 0 30px, #16150f 30px 60px); opacity: .9;"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11,11,11,.9), rgba(11,11,11,.35));"></div>
+    <div style="position: relative; max-width: 1440px; margin: 0 auto; padding: clamp(70px, 11vw, 170px) clamp(18px, 4vw, 56px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(30px,5vw,80px); align-items: center;">
+      <div data-reveal="1" style="opacity: 0; transform: translateY(20px); transition: opacity .8s, transform .8s cubic-bezier(.2,.7,.3,1);">
+        <div style="font-family: 'Archivo Narrow', monospace; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: rgba(244,242,239,.45);">04 — Profissionais</div>
+        <h2 style="margin: 14px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(28px, 3.9vw, 52px); line-height: 1.08; letter-spacing: -.015em; text-wrap: pretty;">Arquitetos e designers também fazem parte desse projeto.</h2>
+        <p style="margin: 22px 0 0; max-width: 44ch; font-size: 15px; line-height: 1.75; color: rgba(244,242,239,.66); font-weight: 300;">Uma estrutura pensada para transformar especificações, materiais e desenhos em execução.</p>
+        <a href="{{ waHref }}" target="_blank" rel="noreferrer" style="margin-top: 32px; display: inline-flex; align-items: center; justify-content: center; height: 56px; padding: 0 32px; border: 1px solid rgba(244,242,239,.34); color: #f4f2ef; font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; transition: background .4s, transform .4s;" style-hover="background: rgba(244,242,239,.1); transform: translateY(-2px); color: #f4f2ef">Falar sobre um projeto</a>
+      </div>
+      <div data-reveal="1" style="position: relative; aspect-ratio: 4/3; background: repeating-linear-gradient(135deg, rgba(244,242,239,.12) 0 14px, rgba(244,242,239,.05) 14px 28px); border: 1px solid rgba(244,242,239,.16); display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px;">
+        <span style="font-family: 'Archivo Narrow', monospace; font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: rgba(244,242,239,.45); line-height: 2;">detalhe de projeto<br />desenho técnico · amostra de pedra</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="contato" style="background: #f4f2ef; padding: clamp(70px, 11vw, 160px) clamp(18px, 4vw, 56px);">
+    <div style="max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); gap: clamp(36px,6vw,90px);">
+      <div data-reveal="1" style="opacity: 0; transform: translateY(20px); transition: opacity .8s, transform .8s cubic-bezier(.2,.7,.3,1);">
+        <div style="font-family: 'Archivo Narrow', monospace; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: #8c8880;">05 — Orçamento</div>
+        <h2 style="margin: 14px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(32px, 5vw, 68px); line-height: 1.02; letter-spacing: -.02em; max-width: 16ch;">Seu projeto começa com uma escolha.</h2>
+        <p style="margin: 22px 0 0; max-width: 40ch; font-size: 15px; line-height: 1.75; color: #4a4741; font-weight: 300;">Envie sua ideia, referência ou projeto. Vamos conversar sobre as possibilidades.</p>
+        <a href="{{ waHref }}" target="_blank" rel="noreferrer" style="margin-top: 30px; display: inline-flex; align-items: center; gap: 12px; height: 56px; padding: 0 30px; background: #0b0b0b; color: #f4f2ef; font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; animation: oaPulse 3.4s ease-out infinite; transition: transform .4s;" style-hover="transform: translateY(-2px); color: #f4f2ef">Falar pelo WhatsApp</a>
+      </div>
+      <form onSubmit="{{ onSubmit }}" data-reveal="1" style="display: flex; flex-direction: column; gap: 22px;">
+        <label style="display: block;">
+          <span style="{{ fieldLabelStyle }}">Nome</span>
+          <input type="text" placeholder="Seu nome" style="{{ inputStyle }}" style-focus="border-color: #0b0b0b" />
+        </label>
+        <label style="display: block;">
+          <span style="{{ fieldLabelStyle }}">WhatsApp</span>
+          <input type="tel" placeholder="(00) 00000-0000" style="{{ inputStyle }}" style-focus="border-color: #0b0b0b" />
+        </label>
+        <label style="display: block;">
+          <span style="{{ fieldLabelStyle }}">Qual ambiente você está planejando?</span>
+          <select style="{{ inputStyle }}" style-focus="border-color: #0b0b0b">
+            <option>Cozinha</option>
+            <option>Banheiro</option>
+            <option>Área gourmet</option>
+            <option>Escada</option>
+            <option>Bancada</option>
+            <option>Outro</option>
+          </select>
+        </label>
+        <label style="display: block;">
+          <span style="{{ fieldLabelStyle }}">Mensagem</span>
+          <textarea rows="4" placeholder="Conte sobre o projeto, medidas ou referências" style="{{ inputStyle }}" style-focus="border-color: #0b0b0b"></textarea>
+        </label>
+        <button type="submit" style="align-self: start; height: 56px; padding: 0 36px; border: 0; background: #0b0b0b; color: #f4f2ef; font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; cursor: pointer; transition: transform .4s, opacity .4s;" style-hover="transform: translateY(-2px); opacity: .88">Enviar projeto</button>
+        <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+          <div style="padding: 16px 18px; background: #e9e6e1; border-left: 1px solid #0b0b0b; font-family: 'Archivo Narrow', monospace; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: #4a4741;">Mensagem preparada para envio.</div>
+        </sc-if>
+      </form>
+    </div>
+  </section>
+
+  <footer style="background: #0b0b0b; color: rgba(244,242,239,.7); padding: clamp(52px, 7vw, 100px) clamp(18px, 4vw, 56px) clamp(90px, 8vw, 60px);">
+    <div style="max-width: 1440px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: clamp(30px,4vw,60px); padding-bottom: clamp(36px,4vw,60px); border-bottom: 1px solid rgba(244,242,239,.14);">
+        <div>
+          <img src="logo-oliveira-branca.png" alt="Marmoraria Oliveira Artes" style="height: 54px; width: auto; display: block;" />
+          <p style="margin: 20px 0 0; max-width: 30ch; font-size: 13.5px; line-height: 1.75; font-weight: 300; color: rgba(244,242,239,.55);">Pedras naturais em projetos residenciais e comerciais.</p>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; font-size: 13px;">
+          <span style="{{ footHeadStyle }}">Navegação</span>
+          <a href="#projetos" style="color: rgba(244,242,239,.7);" style-hover="color: #f4f2ef">Projetos</a>
+          <a href="#materiais" style="color: rgba(244,242,239,.7);" style-hover="color: #f4f2ef">Materiais</a>
+          <a href="#processo" style="color: rgba(244,242,239,.7);" style-hover="color: #f4f2ef">Serviços</a>
+          <a href="#manifesto" style="color: rgba(244,242,239,.7);" style-hover="color: #f4f2ef">Sobre</a>
+          <a href="#contato" style="color: rgba(244,242,239,.7);" style-hover="color: #f4f2ef">Contato</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; font-size: 13px;">
+          <span style="{{ footHeadStyle }}">Contato</span>
+          <a href="{{ waHref }}" target="_blank" rel="noreferrer" style="color: rgba(244,242,239,.7);" style-hover="color: #f4f2ef">WhatsApp {{ waDisplay }}</a>
+          <a href="https://www.instagram.com/marmorariaoliveiraarts/" target="_blank" rel="noreferrer" style="color: rgba(244,242,239,.7);" style-hover="color: #f4f2ef">@marmorariaoliveiraarts</a>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; font-size: 13px; color: rgba(244,242,239,.45);">
+          <span style="{{ footHeadStyle }}">Atendimento</span>
+          <span>Endereço a confirmar</span>
+          <span>Horário a confirmar</span>
+        </div>
+      </div>
+      <div style="padding-top: 26px; display: flex; flex-wrap: wrap; gap: 12px; justify-content: space-between; font-family: 'Archivo Narrow', monospace; font-size: 10px; letter-spacing: .22em; text-transform: uppercase; color: rgba(244,242,239,.4);">
+        <span>Marmoraria Oliveira Artes</span>
+        <span>Prévia demonstrativa · conteúdo e imagens conceituais</span>
+      </div>
+    </div>
+  </footer>
+
+  <a href="{{ waHref }}" target="_blank" rel="noreferrer" style="{{ waFloatStyle }}" style-hover="transform: scale(1.06)">
+    <span style="font-family: 'Archivo Narrow', monospace; font-size: 10px; letter-spacing: .18em; text-transform: uppercase;">Whats</span>
+  </a>
+
+  <div style="{{ mobileBarStyle }}">
+    <a href="{{ waHref }}" target="_blank" rel="noreferrer" style="flex: 1; display: flex; align-items: center; justify-content: center; height: 100%; color: #f4f2ef; font-size: 11px; letter-spacing: .18em; text-transform: uppercase; border-right: 1px solid rgba(244,242,239,.2);">WhatsApp</a>
+    <a href="#contato" style="flex: 1.3; display: flex; align-items: center; justify-content: center; height: 100%; color: #f4f2ef; font-size: 11px; letter-spacing: .18em; text-transform: uppercase;">Solicitar orçamento</a>
+  </div>
+
+  <sc-if value="{{ lightbox }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 90; background: rgba(8,8,8,.96); display: flex; flex-direction: column; animation: oaRise .4s both;">
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px clamp(16px,3vw,36px); border-bottom: 1px solid rgba(244,242,239,.14);">
+        <span style="font-family: 'Archivo Narrow', monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: rgba(244,242,239,.5);">{{ lightbox.counter }}</span>
+        <button onClick="{{ closeLightbox }}" aria-label="Fechar" style="width: 44px; height: 44px; border: 1px solid rgba(244,242,239,.28); background: none; color: #f4f2ef; font-size: 16px; cursor: pointer; transition: background .3s;" style-hover="background: rgba(244,242,239,.12)">✕</button>
+      </div>
+      <div style="flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; padding: clamp(16px,3vw,40px);">
+        <div style="position: relative; width: 100%; max-width: 1100px; aspect-ratio: 16/10; background: {{ lightbox.stripes }}; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px;">
+          <span style="font-family: 'Archivo Narrow', monospace; font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: rgba(11,11,11,.4); line-height: 2;">{{ lightbox.slot }}</span>
+        </div>
+      </div>
+      <div style="display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 18px; padding: clamp(16px,3vw,30px) clamp(16px,3vw,36px) clamp(24px,3vw,40px);">
+        <div>
+          <div style="font-family: 'Archivo Narrow', monospace; font-size: 10px; letter-spacing: .24em; text-transform: uppercase; color: rgba(244,242,239,.5);">{{ lightbox.category }} · {{ lightbox.material }}</div>
+          <div style="margin-top: 10px; font-family: 'Instrument Serif', Georgia, serif; font-size: clamp(26px,3.4vw,44px); color: #f4f2ef; line-height: 1.05;">{{ lightbox.title }}</div>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <button onClick="{{ prev }}" aria-label="Anterior" style="{{ navBtnStyle }}" style-hover="background: rgba(244,242,239,.12)">←</button>
+          <button onClick="{{ next }}" aria-label="Próximo" style="{{ navBtnStyle }}" style-hover="background: rgba(244,242,239,.12)">→</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ material }}" hint-placeholder-val="{{ false }}">
+    <div style="position: fixed; inset: 0; z-index: 95; background: rgba(244,242,239,.98); overflow-y: auto; animation: oaRise .4s both;">
+      <div style="max-width: 1200px; margin: 0 auto; padding: clamp(20px,4vw,56px) clamp(18px,4vw,48px) clamp(60px,8vw,90px);">
+        <div style="display: flex; justify-content: flex-end;">
+          <button onClick="{{ closeMaterial }}" aria-label="Fechar" style="width: 46px; height: 46px; border: 1px solid #cdc8c1; background: none; font-size: 16px; cursor: pointer; transition: background .3s;" style-hover="background: #e9e6e1">✕</button>
+        </div>
+        <div style="font-family: 'Archivo Narrow', monospace; font-size: 10.5px; letter-spacing: .3em; text-transform: uppercase; color: #8c8880;">Ficha de material</div>
+        <h3 style="margin: 12px 0 0; font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; font-size: clamp(38px,7vw,92px); line-height: 1; letter-spacing: -.025em;">{{ material.name }}</h3>
+        <div style="margin-top: clamp(26px,4vw,50px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(24px,4vw,56px); align-items: start;">
+          <div style="aspect-ratio: 4/5; background: {{ material.stripes }}; display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px;">
+            <span style="font-family: 'Archivo Narrow', monospace; font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: rgba(11,11,11,.4); line-height: 2;">macro da pedra<br />{{ material.name }}</span>
+          </div>
+          <div>
+            <p style="margin: 0; font-size: clamp(15px,1.4vw,19px); line-height: 1.7; color: #4a4741; font-weight: 300;">{{ material.long }}</p>
+            <div style="margin-top: 34px; font-family: 'Archivo Narrow', monospace; font-size: 10px; letter-spacing: .26em; text-transform: uppercase; color: #8c8880;">Aplicações</div>
+            <div style="margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px;">
+              <sc-for list="{{ material.apps }}" as="a" hint-placeholder-count="4">
+                <span style="padding: 9px 14px; border: 1px solid #cdc8c1; font-size: 12px; letter-spacing: .04em; color: #4a4741;">{{ a }}</span>
+              </sc-for>
+            </div>
+            <div style="margin-top: 34px; height: 1px; background: #dcd8d2;"></div>
+            <a href="#contato" onClick="{{ closeMaterial }}" style="margin-top: 30px; display: inline-flex; align-items: center; justify-content: center; height: 56px; padding: 0 34px; background: #0b0b0b; color: #f4f2ef; font-size: 11.5px; letter-spacing: .2em; text-transform: uppercase; transition: transform .4s;" style-hover="transform: translateY(-2px); color: #f4f2ef">Solicitar orçamento</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;5511964129848&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;},&quot;whatsappDisplay&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;(11) 96412-9848&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Contato&quot;},&quot;projectGrid&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;editorial&quot;,&quot;denso&quot;],&quot;default&quot;:&quot;editorial&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Projetos&quot;}}">
+const STRIPES = [
+  "repeating-linear-gradient(118deg, #e4e0da 0 22px, #dbd6cf 22px 44px)",
+  "repeating-linear-gradient(132deg, #dedad3 0 18px, #d5d0c8 18px 36px)",
+  "repeating-linear-gradient(104deg, #e8e5e0 0 26px, #ddd9d3 26px 52px)",
+  "repeating-linear-gradient(146deg, #e2ded8 0 20px, #d8d3cb 20px 40px)"
+];
+
+const PROJECTS = [
+  { title: "Casa Contemporânea", category: "Cozinhas", material: "Mármore", slot: "cozinha · ilha em pedra", ratio: "4/5" },
+  { title: "Projeto Monocromático", category: "Banheiros", material: "Granito", slot: "banheiro · lavatório esculpido", ratio: "4/3" },
+  { title: "Residência Horizonte", category: "Áreas gourmet", material: "Granito", slot: "área gourmet · bancada contínua", ratio: "4/3" },
+  { title: "Suíte Privativa", category: "Revestimentos", material: "Mármore", slot: "suíte · painel de pedra", ratio: "4/5" },
+  { title: "Vão Central", category: "Escadas", material: "Mármore", slot: "escada · degraus em pedra", ratio: "4/5" },
+  { title: "Linha Contínua", category: "Bancadas", material: "Granito", slot: "bancada · detalhe de acabamento", ratio: "4/3" },
+  { title: "Pátio Interno", category: "Áreas gourmet", material: "Granito", slot: "área externa · churrasqueira em pedra", ratio: "4/3" },
+  { title: "Volume Claro", category: "Cozinhas", material: "Mármore", slot: "cozinha · frontão e cuba", ratio: "4/5" }
+];
+
+const CATS = ["Todos", "Cozinhas", "Banheiros", "Áreas gourmet", "Escadas", "Bancadas", "Revestimentos"];
+
+const MATERIALS = [
+  { name: "Mármores", desc: "Veios naturais e superfície suave, para ambientes onde a pedra é o ponto de atenção.",
+    long: "Pedra de origem metamórfica, reconhecida pelos veios e pela luminosidade da superfície. Cada chapa é única, o que exige leitura do desenho antes do corte para que o veio siga o projeto.",
+    apps: ["Bancadas", "Lavatórios", "Painéis", "Revestimentos", "Peças especiais"] },
+  { name: "Granitos", desc: "Resistência e uniformidade para superfícies de uso intenso.",
+    long: "Pedra de origem ígnea, de grão homogêneo e alta resistência mecânica. Indicada para superfícies de trabalho e áreas de convivência que pedem durabilidade sem abrir mão do acabamento.",
+    apps: ["Bancadas", "Ilhas", "Áreas gourmet", "Escadas", "Soleiras"] }
+];
+
+const STEPS = [
+  { n: "01", title: "Escolha", text: "Leitura do material junto ao projeto: desenho do veio, tom e acabamento." },
+  { n: "02", title: "Medição", text: "Conferência das dimensões no ambiente antes de qualquer corte." },
+  { n: "03", title: "Produção", text: "Corte e preparo das peças conforme o desenho aprovado." },
+  { n: "04", title: "Instalação", text: "Montagem no local com atenção aos encontros e ao acabamento final." }
+];
+
+class Component extends DCLogic {
+  state = { scrolled: false, menu: false, filter: "Todos", lightIdx: null, matIdx: null, sent: false, px: 0, py: 0, narrow: false };
+
+  componentDidMount() {
+    this._onScroll = () => {
+      const s = window.scrollY > 40;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    this._onMove = (e) => {
+      this._mx = (e.clientX / window.innerWidth - 0.5) * 2;
+      this._my = (e.clientY / window.innerHeight - 0.5) * 2;
+      if (this._raf) return;
+      this._raf = requestAnimationFrame(() => {
+        this._raf = null;
+        this.setState({ px: this._mx, py: this._my });
+      });
+    };
+    this._onResize = () => {
+      const n = window.innerWidth < 860;
+      if (n !== this.state.narrow) this.setState({ narrow: n });
+    };
+    this._onKey = (e) => {
+      if (e.key === "Escape") this.setState({ lightIdx: null, matIdx: null, menu: false });
+      if (this.state.lightIdx !== null) {
+        if (e.key === "ArrowRight") this.step(1);
+        if (e.key === "ArrowLeft") this.step(-1);
+      }
+    };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    window.addEventListener("mousemove", this._onMove, { passive: true });
+    window.addEventListener("resize", this._onResize);
+    window.addEventListener("keydown", this._onKey);
+    this._onResize();
+    this._io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => {
+        if (en.isIntersecting) {
+          en.target.dataset.shown = "1";
+          this._io.unobserve(en.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.08 });
+    this.observe();
+  }
+
+  componentDidUpdate() { this.observe(); }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._onScroll);
+    window.removeEventListener("mousemove", this._onMove);
+    window.removeEventListener("resize", this._onResize);
+    window.removeEventListener("keydown", this._onKey);
+    if (this._io) this._io.disconnect();
+  }
+
+  observe() {
+    if (!this._io) return;
+    document.querySelectorAll("[data-reveal]").forEach((el) => {
+      if (el.dataset.oaSeen) return;
+      el.dataset.oaSeen = "1";
+      this._io.observe(el);
+    });
+  }
+
+  visible() {
+    const f = this.state.filter;
+    return PROJECTS.filter((p) => f === "Todos" || p.category === f);
+  }
+
+  step(d) {
+    const list = this.visible();
+    const i = this.state.lightIdx;
+    if (i === null) return;
+    this.setState({ lightIdx: (i + d + list.length) % list.length });
+  }
+
+  renderVals() {
+    const s = this.state;
+    const wa = this.props.whatsapp ?? "5511964129848";
+    const msg = encodeURIComponent("Olá! Vim pelo site da Oliveira Artes e gostaria de solicitar um orçamento.");
+    const list = this.visible();
+    const dense = (this.props.projectGrid ?? "editorial") === "denso";
+
+    const solid = s.scrolled;
+    const light = solid ? "#0b0b0b" : "#f4f2ef";
+
+    const lb = s.lightIdx !== null && list[s.lightIdx]
+      ? Object.assign({}, list[s.lightIdx], {
+          stripes: STRIPES[s.lightIdx % STRIPES.length],
+          counter: String(s.lightIdx + 1).padStart(2, "0") + " / " + String(list.length).padStart(2, "0")
+        })
+      : null;
+
+    const mat = s.matIdx !== null && MATERIALS[s.matIdx]
+      ? Object.assign({}, MATERIALS[s.matIdx], { stripes: STRIPES[(s.matIdx + 1) % STRIPES.length] })
+      : null;
+
+    return {
+      waHref: "https://wa.me/" + wa + "?text=" + msg,
+      waDisplay: this.props.whatsappDisplay ?? "(11) 96412-9848",
+      sent: s.sent,
+      steps: STEPS,
+
+      headerStyle: {
+        position: "fixed", top: 0, left: 0, right: 0, zIndex: 80, height: solid ? "68px" : "94px",
+        background: solid ? "rgba(244,242,239,.88)" : "transparent",
+        backdropFilter: solid ? "blur(14px) saturate(140%)" : "none",
+        borderBottom: solid ? "1px solid #dcd8d2" : "1px solid transparent",
+        transition: "height .5s cubic-bezier(.2,.7,.3,1), background .5s, border-color .5s"
+      },
+      logoStyle: {
+        height: solid ? "40px" : "52px", width: "auto", display: "block",
+        transition: "height .5s cubic-bezier(.2,.7,.3,1), opacity .5s",
+        opacity: solid ? 1 : 0
+      },
+      logoWhiteStyle: {
+        position: "absolute", left: 0, top: 0,
+        height: solid ? "40px" : "52px", width: "auto", display: "block",
+        transition: "height .5s cubic-bezier(.2,.7,.3,1), opacity .5s",
+        opacity: solid ? 0 : 1
+      },
+      navLinkStyle: {
+        display: s.narrow ? "none" : "inline-block", fontSize: "11.5px", letterSpacing: ".18em",
+        textTransform: "uppercase", color: light, opacity: .82, transition: "opacity .3s, color .5s"
+      },
+      navCtaStyle: {
+        display: s.narrow ? "none" : "inline-flex", alignItems: "center", height: "42px", padding: "0 20px",
+        border: "1px solid " + (solid ? "#0b0b0b" : "rgba(244,242,239,.4)"),
+        color: light, fontSize: "10.5px", letterSpacing: ".18em", textTransform: "uppercase",
+        transition: "border-color .5s, color .5s, opacity .3s"
+      },
+      burgerStyle: {
+        display: s.narrow ? "flex" : "none", flexDirection: "column", justifyContent: "center", gap: "6px",
+        width: "46px", height: "46px", border: "0", background: "none", cursor: "pointer", padding: 0, alignItems: "flex-end"
+      },
+      burgerTop: {
+        display: "block", width: "24px", height: "1px", background: s.menu ? "#f4f2ef" : light,
+        transition: "transform .4s cubic-bezier(.2,.7,.3,1), background .4s",
+        transform: s.menu ? "translateY(3.5px) rotate(45deg)" : "none"
+      },
+      burgerBottom: {
+        display: "block", width: s.menu ? "24px" : "16px", height: "1px", background: s.menu ? "#f4f2ef" : light,
+        transition: "transform .4s cubic-bezier(.2,.7,.3,1), width .4s, background .4s",
+        transform: s.menu ? "translateY(-3.5px) rotate(-45deg)" : "none"
+      },
+      mobileMenuStyle: {
+        position: "fixed", inset: 0, zIndex: 79, background: "#0b0b0b",
+        opacity: s.menu ? 1 : 0, pointerEvents: s.menu ? "auto" : "none",
+        transform: s.menu ? "none" : "translateY(-12px)",
+        transition: "opacity .45s cubic-bezier(.2,.7,.3,1), transform .45s cubic-bezier(.2,.7,.3,1)"
+      },
+      mobileLinkStyle: {
+        display: "block", padding: "14px 0", borderBottom: "1px solid rgba(244,242,239,.12)",
+        fontFamily: "'Instrument Serif', Georgia, serif", fontSize: "34px", color: "#f4f2ef", lineHeight: 1.1
+      },
+      toggleMenu: () => this.setState({ menu: !s.menu }),
+      closeMenu: () => this.setState({ menu: false }),
+
+      heroSlotLabelStyle: {
+        display: s.narrow ? "none" : "block",
+        position: "absolute", right: "6%", top: "22%", maxWidth: "260px", textAlign: "right",
+        fontFamily: "'Archivo Narrow', monospace", fontSize: "10px", letterSpacing: ".28em",
+        color: "rgba(244,242,239,.38)", textTransform: "uppercase", lineHeight: 2.1
+      },
+      heroImgStyle: {
+        position: "absolute", inset: "-6%", background: "#141414",
+        transform: "translate3d(" + (-s.px * 14).toFixed(2) + "px," + (-s.py * 14).toFixed(2) + "px,0) scale(1.04)",
+        transition: "transform .9s cubic-bezier(.2,.7,.3,1)",
+        animation: "oaRise 1.4s both"
+      },
+
+      categories: CATS.map((c) => ({
+        label: c,
+        onClick: () => this.setState({ filter: c, lightIdx: null }),
+        style: {
+          flex: "0 0 auto", height: "40px", padding: "0 18px", cursor: "pointer",
+          border: "1px solid " + (s.filter === c ? "#0b0b0b" : "#dcd8d2"),
+          background: s.filter === c ? "#0b0b0b" : "transparent",
+          color: s.filter === c ? "#f4f2ef" : "#6f6a63",
+          fontSize: "10.5px", letterSpacing: ".2em", textTransform: "uppercase",
+          transition: "background .4s, color .4s, border-color .4s"
+        }
+      })),
+      gridStyle: {
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, " + (dense ? "240px" : "320px") + "), 1fr))",
+        gap: dense ? "18px" : "clamp(18px, 2.6vw, 42px)",
+        alignItems: "start"
+      },
+      visibleProjects: list.map((p, i) => ({
+        title: p.title, category: p.category, material: p.material, slot: p.slot,
+        ratio: dense ? "4/3" : p.ratio,
+        stripes: STRIPES[i % STRIPES.length],
+        onClick: () => this.setState({ lightIdx: i }),
+        cardStyle: {
+          transitionDelay: (i % 3) * 0.06 + "s",
+          display: "block", width: "100%", textAlign: "left", padding: 0, cursor: "pointer",
+          background: "none", border: "0", borderTop: "1px solid transparent", color: "#0b0b0b"
+        }
+      })),
+
+      materials: MATERIALS.map((m, i) => ({
+        name: m.name, desc: m.desc,
+        stripes: STRIPES[(i + 2) % STRIPES.length],
+        onClick: () => this.setState({ matIdx: i })
+      })),
+
+      lightbox: lb,
+      closeLightbox: () => this.setState({ lightIdx: null }),
+      prev: () => this.step(-1),
+      next: () => this.step(1),
+      navBtnStyle: {
+        width: "52px", height: "52px", border: "1px solid rgba(244,242,239,.3)", background: "none",
+        color: "#f4f2ef", fontSize: "17px", cursor: "pointer", transition: "background .3s"
+      },
+
+      material: mat,
+      closeMaterial: () => this.setState({ matIdx: null }),
+
+      onSubmit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
+      fieldLabelStyle: {
+        display: "block", marginBottom: "10px", fontFamily: "'Archivo Narrow', monospace",
+        fontSize: "10px", letterSpacing: ".24em", textTransform: "uppercase", color: "#8c8880"
+      },
+      inputStyle: {
+        width: "100%", padding: "12px 0", border: "0", borderBottom: "1px solid #cdc8c1",
+        background: "transparent", fontSize: "15px", color: "#0b0b0b", outline: "none",
+        transition: "border-color .4s", borderRadius: 0, resize: "vertical"
+      },
+      footHeadStyle: {
+        fontFamily: "'Archivo Narrow', monospace", fontSize: "10px", letterSpacing: ".26em",
+        textTransform: "uppercase", color: "rgba(244,242,239,.4)", marginBottom: "4px"
+      },
+
+      waFloatStyle: {
+        display: s.narrow ? "none" : "flex", position: "fixed", right: "26px", bottom: "26px", zIndex: 70,
+        width: "62px", height: "62px", borderRadius: "50%", background: "#0b0b0b", color: "#f4f2ef",
+        alignItems: "center", justifyContent: "center", animation: "oaPulse 3.4s ease-out infinite",
+        transition: "transform .35s cubic-bezier(.2,.7,.3,1)"
+      },
+      mobileBarStyle: {
+        display: s.narrow ? "flex" : "none", position: "fixed", left: 0, right: 0, bottom: 0, zIndex: 70,
+        height: "62px", background: "#0b0b0b", borderTop: "1px solid rgba(244,242,239,.18)"
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
